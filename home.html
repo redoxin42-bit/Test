@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}AI Agent - Home{% endblock %}
+{% block home_active %}active{% endblock %}
+
+{% block content %}
+<div class="spacer"></div>
+
+<section class="chat-section">
+    <div class="chat-input-bar">
+        <button class="action-btn" aria-label="Attach files">
+            <svg viewBox="0 0 24 24">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+            </svg>
+        </button>
+        
+        <input type="text" class="chat-form-input" placeholder="Нажмите на чат, чтобы написать промпт..." autocomplete="off" spellcheck="false">
+        
+        <div class="dropdown-selector">
+            <span>Build</span>
+            <svg viewBox="0 0 24 24">
+                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+            </svg>
+        </div>
+
+        <button class="send-btn" aria-label="Send message">
+            <svg viewBox="0 0 24 24">
+                <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21 12l-8.15-8.15-1.42 1.42L16.86 11H5v2z"/>
+            </svg>
+        </button>
+    </div>
+</section>
+{% endblock %}
