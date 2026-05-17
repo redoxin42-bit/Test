@@ -16,8 +16,8 @@
         </a>
 
         <div class="nav-center">
-            <a href="#" class="nav-tab active">Home</a>
-            <a href="#" class="nav-tab">Profile</a>
+            <button class="nav-tab active" id="tabHome">Home</button>
+            <button class="nav-tab" id="tabProfile">Profile</button>
         </div>
 
         <div class="theme-switch-container">
@@ -34,47 +34,75 @@
     </header>
 
     <main class="main-layout">
-        <div class="welcome-container" id="welcomeContainer">
-            <div class="welcome-block">
-                <h1>Flare Code AI.</h1>
-                <p>Начните вводить свой промпт или прикрепите медиафайлы для анализа.</p>
+        <div class="page-content active" id="contentHome">
+            <div class="welcome-container" id="welcomeContainer">
+                <div class="welcome-block">
+                    <h1 class="gradient-text">Flare Code AI.</h1>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="chat-input-bar">
+                    <button class="action-btn" aria-label="Attach files">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                    </button>
+                    
+                    <input type="text" class="chat-form-input" id="chatInput" placeholder="Нажмите на чат, чтобы написать промпт..." autocomplete="off" spellcheck="false">
+                    
+                    <div class="dropdown-selector">
+                        <span>Build</span>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                        </svg>
+                    </div>
+
+                    <button class="send-btn" aria-label="Send message">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div class="chat-input-area">
-            <div class="chat-input-bar">
-                <button class="action-btn" aria-label="Attach files">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                    </svg>
-                </button>
-                
-                <input type="text" class="chat-form-input" id="chatInput" placeholder="Нажмите на чат, чтобы написать промпт..." autocomplete="off" spellcheck="false">
-                
-                <div class="dropdown-selector">
-                    <span>Build</span>
-                    <svg viewBox="0 0 24 24">
-                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
-                    </svg>
-                </div>
+        <div class="page-content" id="contentProfile">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h2>Регистрация аккаунта</h2>
+                    <p class="auth-subtitle">Выберите удобный способ авторизации для доступа к Flare Code AI</p>
+                    
+                    <div class="auth-methods">
+                        <button class="auth-btn github-auth">
+                            <svg viewBox="0 0 24 24" class="auth-icon">
+                                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                            </svg>
+                            Войти через GitHub
+                        </button>
 
-                <button class="send-btn" aria-label="Send message">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
-                    </svg>
-                </button>
+                        <div class="auth-divider">
+                            <span>или</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="authEmail">Электронная почта</label>
+                            <input type="email" id="authEmail" class="auth-input" placeholder="name@example.com" autocomplete="off">
+                        </div>
+
+                        <button class="auth-btn email-auth">Продолжить по почте</button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
     <script>
-        // 
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-theme');
         });
 
-        // 
         const chatInput = document.getElementById('chatInput');
         const welcomeContainer = document.getElementById('welcomeContainer');
 
@@ -84,6 +112,25 @@
             } else {
                 welcomeContainer.classList.remove('hidden');
             }
+        });
+
+        const tabHome = document.getElementById('tabHome');
+        const tabProfile = document.getElementById('tabProfile');
+        const contentHome = document.getElementById('contentHome');
+        const contentProfile = document.getElementById('contentProfile');
+
+        tabHome.addEventListener('click', () => {
+            tabProfile.classList.remove('active');
+            tabHome.classList.add('active');
+            contentProfile.classList.remove('active');
+            contentHome.classList.add('active');
+        });
+
+        tabProfile.addEventListener('click', () => {
+            tabHome.classList.remove('active');
+            tabProfile.classList.add('active');
+            contentHome.classList.remove('active');
+            contentProfile.classList.add('active');
         });
     </script>
 </body>
