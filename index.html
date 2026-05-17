@@ -22,12 +22,6 @@
 
         <div class="theme-switch-container">
             <div class="theme-btn" id="themeToggle">
-                <svg class="toggle-icon icon-sun" viewBox="0 0 24 24">
-                    <path d="M12 6.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 1.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-6a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 12 2Zm0 16a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 12 18Zm-8-6a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5A.75.75 0 0 1 4 12Zm14 0a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Zm-13.03-6.97a.75.75 0 0 1 1.06 0l1.06 1.06a.75.75 0 1 1-1.06 1.06L4.97 6.09a.75.75 0 0 1 0-1.06Zm12.02 12.02a.75.75 0 0 1 1.06 0l1.06 1.06a.75.75 0 1 1-1.06 1.06l-1.06-1.06a.75.75 0 0 1 0-1.06Zm-12.02 0a.75.75 0 0 1 0-1.06l1.06-1.06a.75.75 0 1 1 1.06 1.06l-1.06 1.06a.75.75 0 0 1-1.06 0Zm12.02-12.02a.75.75 0 0 1 0-1.06l1.06-1.06a.75.75 0 1 1 1.06 1.06l-1.06 1.06a.75.75 0 0 1-1.06 0Z"/>
-                </svg>
-                <svg class="toggle-icon icon-moon" viewBox="0 0 24 24">
-                    <path d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"/>
-                </svg>
                 <div class="theme-slider-knob"></div>
             </div>
         </div>
@@ -69,7 +63,7 @@
 
         <div class="page-content" id="contentProfile">
             <div class="auth-container">
-                <div class="auth-card">
+                <div class="auth-card" id="authCard">
                     <h2>Регистрация аккаунта</h2>
                     <p class="auth-subtitle">Выберите удобный способ авторизации для доступа к Flare Code AI</p>
                     
@@ -118,19 +112,29 @@
         const tabProfile = document.getElementById('tabProfile');
         const contentHome = document.getElementById('contentHome');
         const contentProfile = document.getElementById('contentProfile');
+        const authCard = document.getElementById('authCard');
 
         tabHome.addEventListener('click', () => {
             tabProfile.classList.remove('active');
             tabHome.classList.add('active');
-            contentProfile.classList.remove('active');
-            contentHome.classList.add('active');
+            
+            authCard.classList.remove('show');
+            setTimeout(() => {
+                contentProfile.classList.remove('active');
+                contentHome.classList.add('active');
+            }, 300);
         });
 
         tabProfile.addEventListener('click', () => {
             tabHome.classList.remove('active');
             tabProfile.classList.add('active');
+            
             contentHome.classList.remove('active');
             contentProfile.classList.add('active');
+            
+            requestAnimationFrame(() => {
+                authCard.classList.add('show');
+            });
         });
     </script>
 </body>
