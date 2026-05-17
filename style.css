@@ -3,7 +3,7 @@
 :root {
     --bg-main: #000000;
     --bg-gradient: radial-gradient(circle at 50% 0%, #111111 0%, #000000 70%);
-    --panel-bg: rgba(15, 15, 15, 0.65);
+    --panel-bg: rgba(15, 15, 15, 0.7);
     --panel-border: rgba(255, 255, 255, 0.08);
     --panel-border-hover: rgba(255, 255, 255, 0.2);
     --chat-input-bg: #0a0a0a;
@@ -17,7 +17,7 @@
     --btn-send-bg: #ffffff;
     --btn-send-icon: #000000;
     --btn-send-hover: #e4e4e7;
-    --slider-bg: #18181b;
+    --slider-bg: #111111;
     --slider-border: rgba(255, 255, 255, 0.1);
     --slider-knob: #ffffff;
     --font-family: 'Inter', sans-serif;
@@ -29,7 +29,7 @@
 body.light-theme {
     --bg-main: #ffffff;
     --bg-gradient: radial-gradient(circle at 50% 0%, #f4f4f5 0%, #ffffff 70%);
-    --panel-bg: rgba(255, 255, 255, 0.7);
+    --panel-bg: rgba(255, 255, 255, 0.75);
     --panel-border: rgba(0, 0, 0, 0.08);
     --panel-border-hover: rgba(0, 0, 0, 0.2);
     --chat-input-bg: #f4f4f5;
@@ -45,7 +45,7 @@ body.light-theme {
     --btn-send-hover: #27272a;
     --slider-bg: #e4e4e7;
     --slider-border: rgba(0, 0, 0, 0.08);
-    --slider-knob: #ffffff;
+    --slider-knob: #000000;
     --gradient-glow: linear-gradient(90deg, #09090b, #ff4081, #09090b);
 }
 
@@ -118,12 +118,12 @@ body {
 .nav-center {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     background-color: var(--panel-bg);
     border: 1px solid var(--panel-border);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    padding: 6px;
+    padding: 4px;
     border-radius: 32px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     transition: border-color 0.4s ease, background-color 0.4s ease;
@@ -134,9 +134,9 @@ body {
     border: none;
     color: var(--text-muted);
     font-family: var(--font-family);
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    padding: 8px 22px;
+    padding: 10px 24px;
     border-radius: 24px;
     letter-spacing: -0.01em;
     cursor: pointer;
@@ -160,47 +160,11 @@ body {
     background-color: var(--slider-bg);
     border: 1px solid var(--slider-border);
     border-radius: 30px;
-    width: 54px;
+    width: 52px;
     height: 28px;
     position: relative;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5px;
-    overflow: hidden;
-    transition: background-color 0.4s ease, border-color 0.4s ease;
-}
-
-.toggle-icon {
-    width: 14px;
-    height: 14px;
-    z-index: 1;
-    pointer-events: none;
-    transition: var(--transition-smooth);
-}
-
-.icon-sun {
-    fill: #f59e0b;
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-}
-
-.icon-moon {
-    fill: #a1a1aa;
-    transform: scale(0) rotate(-45deg);
-    opacity: 0;
-}
-
-body.light-theme .icon-sun {
-    transform: scale(0) rotate(45deg);
-    opacity: 0;
-}
-
-body.light-theme .icon-moon {
-    fill: #3b82f6;
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
+    transition: background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease;
 }
 
 .theme-slider-knob {
@@ -212,12 +176,11 @@ body.light-theme .icon-moon {
     background-color: var(--slider-knob);
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
 }
 
 body.light-theme .theme-slider-knob {
-    transform: translateX(26px);
+    transform: translateX(24px);
 }
 
 .main-layout {
@@ -235,6 +198,8 @@ body.light-theme .theme-slider-knob {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .page-content.active {
@@ -244,7 +209,7 @@ body.light-theme .theme-slider-knob {
 
 .welcome-container {
     position: absolute;
-    top: 42%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -257,11 +222,11 @@ body.light-theme .theme-slider-knob {
 
 .welcome-container.hidden {
     opacity: 0;
-    transform: translate(-50%, -37%) scale(0.95);
+    transform: translate(-50%, -35%) scale(0.95);
 }
 
 .welcome-block h1 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 700;
     letter-spacing: -0.03em;
 }
@@ -386,7 +351,6 @@ body.light-theme .theme-slider-knob {
     align-items: center;
     justify-content: center;
     padding: 24px;
-    padding-top: 100px;
 }
 
 .auth-card {
@@ -395,26 +359,33 @@ body.light-theme .theme-slider-knob {
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     width: 100%;
-    max-width: 440px;
+    max-width: 420px;
     border-radius: 28px;
-    padding: 32px;
+    padding: 36px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
     text-align: center;
-    transition: border-color 0.4s ease, background-color 0.4s ease;
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, background-color 0.4s ease;
+}
+
+.auth-card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 .auth-card h2 {
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .auth-subtitle {
     font-size: 0.95rem;
     color: var(--text-muted);
     line-height: 1.4;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
 }
 
 .auth-methods {
@@ -425,8 +396,8 @@ body.light-theme .theme-slider-knob {
 
 .auth-btn {
     width: 100%;
-    height: 48px;
-    border-radius: 24px;
+    height: 52px;
+    border-radius: 26px;
     border: none;
     font-family: var(--font-family);
     font-size: 1rem;
@@ -435,26 +406,33 @@ body.light-theme .theme-slider-knob {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     transition: var(--transition-fast);
 }
 
 .github-auth {
-    background-color: #24292e;
+    background-color: rgba(255, 255, 255, 0.08);
     color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.github-auth:hover { background-color: #1a1e22; }
+.github-auth:hover { 
+    background-color: rgba(255, 255, 255, 0.15); 
+}
 
 body.light-theme .github-auth {
-    background-color: #0f1115;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-body.light-theme .github-auth:hover { background-color: #24292e; }
+body.light-theme .github-auth:hover { 
+    background-color: rgba(0, 0, 0, 0.1); 
+}
 
 .auth-icon {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     fill: currentColor;
 }
 
@@ -463,7 +441,7 @@ body.light-theme .github-auth:hover { background-color: #24292e; }
     align-items: center;
     text-align: center;
     color: var(--text-muted);
-    font-size: 0.88rem;
+    font-size: 0.9rem;
 }
 
 .auth-divider::before, .auth-divider::after {
@@ -472,8 +450,8 @@ body.light-theme .github-auth:hover { background-color: #24292e; }
     border-bottom: 1px solid var(--panel-border);
 }
 
-.auth-divider:not(:empty)::before { margin-right: .75em; }
-.auth-divider:not(:empty)::after { margin-left: .75em; }
+.auth-divider:not(:empty)::before { margin-right: 1em; }
+.auth-divider:not(:empty)::after { margin-left: 1em; }
 
 .form-group {
     text-align: left;
@@ -483,7 +461,7 @@ body.light-theme .github-auth:hover { background-color: #24292e; }
 }
 
 .form-group label {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-main);
     padding-left: 4px;
@@ -491,11 +469,11 @@ body.light-theme .github-auth:hover { background-color: #24292e; }
 
 .auth-input {
     width: 100%;
-    height: 48px;
+    height: 52px;
     background-color: var(--chat-input-bg);
     border: 1px solid var(--chat-input-border);
-    border-radius: 24px;
-    padding: 0 18px;
+    border-radius: 26px;
+    padding: 0 20px;
     color: var(--text-main);
     font-family: var(--font-family);
     font-size: 1rem;
@@ -516,17 +494,17 @@ body.light-theme .github-auth:hover { background-color: #24292e; }
 
 @media (max-width: 768px) {
     .header { padding: 0 20px; height: 80px; }
-    .chat-input-area { bottom: 20px; padding: 0 16px; }
-    .chat-input-bar { padding: 10px 12px; gap: 10px; border-radius: 30px; }
-    .action-btn, .send-btn { width: 42px; height: 42px; }
+    .chat-input-area { bottom: 24px; padding: 0 16px; }
+    .chat-input-bar { padding: 10px 14px; gap: 12px; border-radius: 32px; }
+    .action-btn, .send-btn { width: 44px; height: 44px; }
     .action-btn svg { width: 20px; height: 20px; }
     .send-btn svg { width: 18px; height: 18px; }
-    .dropdown-selector { padding: 8px 12px; font-size: 0.92rem; }
-    .nav-tab { padding: 8px 18px; font-size: 0.88rem; }
-    .welcome-block h1 { font-size: 2.3rem; }
-    .auth-card { padding: 24px 20px; border-radius: 24px; }
+    .dropdown-selector { padding: 8px 14px; font-size: 0.95rem; }
+    .nav-tab { padding: 10px 20px; font-size: 0.92rem; }
+    .welcome-block h1 { font-size: 2.6rem; }
+    .auth-card { padding: 32px 24px; border-radius: 24px; }
 }
 
 @media (max-width: 480px) {
     .dropdown-selector span { display: none; }
-    }
+        }
